@@ -7,6 +7,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/styles/styles.css">
+        <script src="assets/scripts/scripts.js" defer></script>
     </head>
     <body>
         <header id="header">
@@ -34,30 +35,39 @@
 
                 <h3 class="sub-heading">Education</h3>
                 <div class="items-grid">
-                    <button class="item">
+                    <button class="item" data-type="education" data-key="institution-1">
                         <span class="item-text">institution 1</span>
-                    </button>
-                    <button class="item">
-                        <span class="item-text">institution 2</span>
-                    </button>
-                    <button class="item">
-                        <span class="item-text">institution 3</span>
                     </button>
                 </div>
 
                 <h3 class="sub-heading">Experience</h3>
-                <p class="body-text">I have completed internships at various companies, where I have gained hands-on experience in software development and web design. I have worked on projects that involved developing web applications, creating databases, and implementing user interfaces. These experiences have helped me to develop my skills and gain a better understanding of the industry.</p>
+                <p class="body-text">Experience sample text</p>
                 
                 <h3 class="sub-heading">Certifications</h3>
                 <div class="items-grid">
-                    <button class="item">
-                        <span class="item-text">course 1</span>
+                    <button class="item" data-type="certificate" data-key="course-1">
+                        <span class="item-text">CS50x: CS50's Introduction to Computer Science</span>
                     </button>
-                    <button class="item">
-                        <span class="item-text">course 2</span>
+                    <button class="item" data-type="certificate" data-key="course-2">
+                        <span class="item-text">Lua Programming and Game Development with LÖVE2D</span>
                     </button>
-                    <button class="item">
-                        <span class="item-text">course 3</span>
+                    <button class="item" data-type="certificate" data-key="course-3">
+                        <span class="item-text">Stellenberg High School Web Development</span>
+                    </button>
+                    <button class="item" data-type="certificate" data-key="course-4">
+                        <span class="item-text">CS50g: CS50's Introduction to Game Development</span>
+                    </button>
+                    <button class="item" data-type="certificate" data-key="course-5">
+                        <span class="item-text">Computer Science for Game Development</span>
+                    </button>
+                    <button class="item" data-type="certificate" data-key="course-6">
+                        <span class="item-text">Stellenberg High School Java Coding</span>
+                    </button>
+                    <button class="item" data-type="certificate" data-key="course-7">
+                        <span class="item-text">PHP From Scratch 2024 | Beginner To Advanced</span>
+                    </button>
+                    <button class="item" data-type="certificate" data-key="course-8">
+                        <span class="item-text">Laravel & PHP Mastery: Build 5 Real-World Projects</span>
                     </button>
                 </div>
             </section>
@@ -75,12 +85,16 @@
 
         <footer id="footer"></footer>
 
-        <div class="model-backdrop" id="modalBackdrop" hidden>
+        <div class="modal-backdrop" id="modalBackdrop" hidden>
             <div class="modal" role="dialog" aria-modal="true">
                 <button class="modal-close" aria-label="Close modal">&times;</button>
 
+                <img class="modal-image" id="modalImage" hidden>
                 <h3 id="modalTitle"></h3>
+                <p id="modalGrade" hidden></p>
+                <p id="modalDate"></p>
                 <p id="modalContent"></p>
+                <a class="modal-link" id="modalLink" target="_blank" rel="noopener" hidden>View Certificate</a>
             </div>
         </div>
     </body>
