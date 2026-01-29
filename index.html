@@ -3,21 +3,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jean-Simon de Witt</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/styles/styles.css">
     </head>
     <body>
-        <div id="header">
-            <p>Jean-Simon de Witt</p>
-        </div>
+        <header id="header">
+            <h1>Jean-Simon de Witt</h1>
+            <p class="tagline">Software Developer</p>
+        </header>
 
-        <div id="content">
-            <div class="section" id="about-me">
-                <p class="section-header">About Me</p>
+        <main id="content">
+            <section class="section" id="about-me">
+                <h2 class="section-header">About Me</h2>
 
-                <p class="sub-heading">Who am I?</p>
+                <h3 class="sub-heading">Who am I?</h3>
                 <p class="body-text">I am a software developer with a passion for writing code, learning new languages, and exploring the world of Information Technology.  During my free time, I like playing video games, working out, and spending time with friends and family.</p>
                 <p class="body-text">I did my elective in Java programming while studying at Eduvos. I also have experience with web development using HTML, CSS, JavaScript, and PHP. I enjoy working on projects that challenge me to think critically and solve problems creatively.</p>
 
-                <p class="sub-heading">Skills</p>
+                <h3 class="sub-heading">Skills</h3>
                 <ul class="body-text">
                     <li>Proficient in Java, HTML, CSS, JavaScript, PHP, SQL, Python, C, and C++</li>
                     <li>Experience with database management using MySQL</li>
@@ -27,30 +32,56 @@
                     <li>Excellent communication and teamwork abilities</li>
                 </ul>
 
-                <p class="sub-heading">Education</p>
-                <p class="body-text">I am currently pursuing a Bachelor of Science in Information Technology at Eduvos, where I have gained a solid foundation in programming, database management, and web development. I have also completed several projects that demonstrate my skills and knowledge in these areas.</p>
+                <h3 class="sub-heading">Education</h3>
+                <div class="items-grid">
+                    <button class="item">
+                        <span class="item-text">institution 1</span>
+                    </button>
+                    <button class="item">
+                        <span class="item-text">institution 2</span>
+                    </button>
+                    <button class="item">
+                        <span class="item-text">institution 3</span>
+                    </button>
+                </div>
 
-                <p class="sub-heading">Experience</p>
+                <h3 class="sub-heading">Experience</h3>
                 <p class="body-text">I have completed internships at various companies, where I have gained hands-on experience in software development and web design. I have worked on projects that involved developing web applications, creating databases, and implementing user interfaces. These experiences have helped me to develop my skills and gain a better understanding of the industry.</p>
                 
-                <p class="sub-heading">Certifications</p>
-                <ul class="body-text">
-                    <li>Oracle Certified Associate, Java SE 8 Programmer</li>
-                    <li>Certified Web Developer (CWDP)</li>
-                    <li>MySQL Database Administrator Certification</li>
-                </ul>
-            </div>
-            <div class="section" id="projects">
-                <p class="section-header">Projects</p>
+                <h3 class="sub-heading">Certifications</h3>
+                <div class="items-grid">
+                    <button class="item">
+                        <span class="item-text">course 1</span>
+                    </button>
+                    <button class="item">
+                        <span class="item-text">course 2</span>
+                    </button>
+                    <button class="item">
+                        <span class="item-text">course 3</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="section" id="projects">
+                <h2 class="section-header">Projects</h2>
                 <p class="body-text">Project details coming soon...</p>
-            </div>
-            <div class="section" id="contact">
-                <p class="section-header">Contact</p>
-                <p class="body-text">You can reach me at
+            </section>
+
+            <section class="section" id="contact">
+                <h2 class="section-header">Contact</h2>
+                <p class="body-text">You can reach me at</p>
+            </section>
+        </main>
+
+        <footer id="footer"></footer>
+
+        <div class="model-backdrop" id="modalBackdrop" hidden>
+            <div class="modal" role="dialog" aria-modal="true">
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+
+                <h3 id="modalTitle"></h3>
+                <p id="modalContent"></p>
             </div>
         </div>
-
-        <div id="footer"></div>
-
     </body>
 </html>
