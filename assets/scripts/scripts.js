@@ -1,5 +1,8 @@
+let lastFocusedElement = null;
 document.addEventListener('DOMContentLoaded', () => {
+    // Modal Variables
     const modalBackdrop = document.getElementById('modalBackdrop');
+    const modal = modalBackdrop.querySelector('.modal');
     const modalTitle = document.getElementById('modalTitle');
     const modalContent = document.getElementById('modalContent');
     const modalDate = document.getElementById('modalDate');
@@ -8,13 +11,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalGrade= document.getElementById('modalGrade');
     const closeBtn = document.querySelector('.modal-close');
 
+    // Theme Variables
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+
+    // Modal Focus Trap
+    document.addEventListener('keydown', e => {
+        if (modalBackdrop.hidden) return;
+        if (e.key !== 'Tab') return;
+
+        const focusableElements = modal.querySelectorAll('button, a[href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+        }
+        else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+        }
+    });
+
+    // Modal Data and Logic
     const modalData = {
         "institution-1": {
             type: "education",
-            title: "Institution 1",
-            grade: "BSc Computer Science",
-            date: "Sep 2016 - Jun 2020",
-            content: "Description for Institution 1"
+            title: "Stellenberg High School",
+            grade: "Matric - 6 A's, 1 B",
+            date: "January 2018 - December 2022",
+            content: "I started attending Stellenberg High School in January 2018 and completed my matriculation in December 2022. During my time at Stellenberg, I took seven subjects: English Home Language, Afrikaans Home Language, Mathematics, Life Orientation, Life Sciences (Biology), Computer Application Technology, and Information Technology. I achieved six A's and one B in my final matric exams, earning me an A average. My experience at Stellenberg High School provided me with a solid academic foundation and helped me develop important skills such as critical thinking, problem-solving, and effective communication.",
+        },
+        "institution-2": {
+            type: "education",
+            title: "Eduvos",
+            grade: "Bachelor of Science in Information Technology (Software Engineering)",
+            date: "January 2023 - December 2025",
+            content: "I began my Bachelor of Science in Information Technology with a specialisation in Software Engineering at Eduvos in January 2023 and finished my last academic year in December 2025. At Eduvos, I have taken a variety of modules that have provided me with the necessary knowledge and skills in the field of software engineering. Some of the topics covered in my studies were the fundamentals of programming, algorithms and data structures, user experience design, research methodology, web development, mobile app development, database management, software project management, and business management. I did my elective in Java, which focused my knowledge on programming concepts in Java. These include object-oriented programming, data types and variables, control flow, exception handling, file I/O, data structures, algorithms, GUI development using JavaFX, database connectivity with JDBC, and enterprise programming with Jakarta EE. Through numerous theoretical and practical assignments, as well as exams, I have gained a solid foundation in software engineering principles and practices, preparing me for a successful career in the IT industry.",
+        },
+        "institution-3": {
+            type: "education",
+            title: "Eduvos",
+            grade: "Bachelor of Science Honours in Information Technology (Software Engineering)",
+            date: "February 2026 - Present",
+            content: "I am currently pursuing my Bachelor of Science Honours in Information Technology at Eduvos.",
         },
         "course-1": {
             type: "certificate",
@@ -79,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             content: "This course, presented by Piotr Jura on Udemy, focuses on mastering Laravel and PHP by building five real-world projects. Throughout the course, I learned advanced PHP programming concepts and Laravel framework features, including routing, middleware, Eloquent ORM, authentication, and RESTful API development. The course provided hands-on experience in building practical applications such as a task manager, blog platform, e-commerce site, social media app, and a project management tool, equipping me with the skills to develop robust web applications using Laravel and PHP.",
             link: "https://www.udemy.com/certificate/UC-aace3a96-c0f9-4309-9030-11b44d4c5351/",
             image: "assets/images/Certificate for Laravel & PHP Mastery Build 5 Real-World Projects.jpg"
-        },
+        }
         
     };
 
@@ -88,29 +130,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = item.dataset.key;
             const data = modalData[key];
             if (!data) return;
-
+            lastFocusedElement = document.activeElement;
+            resetModal();
             modalTitle.textContent = data.title;
             modalDate.textContent = data.date || '';
             modalContent.textContent = data.content || '';
 
-            if (data.image) {
+            if (data.type === 'certificate') {
                 modalImage.src = data.image;
                 modalImage.alt = "Certificate for " + data.title;
                 modalImage.hidden = false;
-            }
-            else {
-                modalImage.hidden = true;
-            }
 
-            if (data.link) {
                 modalLink.href = data.link;
                 modalLink.hidden = false;
             }
             else {
+                modalImage.hidden = true;
                 modalLink.hidden = true;
             }
 
-            if (data.grade) {
+            if (data.type === 'education') {
                 modalGrade.textContent = data.grade;
                 modalGrade.hidden = false;
             }
@@ -119,13 +158,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             modalBackdrop.hidden = false;
+            modal.classList.remove('is-closing');
+            modal.classList.add('is-opening');
             document.body.style.overflow = 'hidden';
+
+            const focusableElements = modal.querySelectorAll('button, a[href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+
+            if (focusableElements.length) {
+                focusableElements[0].focus();
+            }
         })
     });
 
     function closeModal() {
-        modalBackdrop.hidden = true;
-        document.body.style.overflow = '';
+        modal.classList.remove('is-opening');
+        modal.classList.add('is-closing');
+
+        modal.addEventListener('animationend', () => {
+            modalBackdrop.hidden = true;
+            document.body.style.overflow = '';
+            lastFocusedElement?.focus();
+        }, {
+            once: true
+        });
     }
 
     closeBtn.addEventListener('click', closeModal);
@@ -137,9 +192,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
+        if (e.key === 'Escape' && !modalBackdrop.hidden) {
             closeModal();
         }
     });
+
+    function resetModal() {
+        modalImage.hidden = true;
+        modalLink.hidden = true;
+        modalGrade.hidden = true;
+    }
+
+    // Theme Toggle Logic
+    if (savedTheme) {
+        root.dataset.theme = savedTheme;
+        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const isDark = root.dataset.theme === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+
+        root.dataset.theme = newTheme;
+        localStorage.setItem('theme', newTheme);
+
+        themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Entry Animation Logic
+    const observer = new IntersectionObserver(enteredElems => {
+        enteredElems.forEach(enteredElem => {
+            if (enteredElem.isIntersecting) {
+                enteredElem.target.classList.add('is-visible');
+                observer.unobserve(enteredElem.target);
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+    document.querySelectorAll('.reveal').forEach(elem => observer.observe(elem));
 
 });
