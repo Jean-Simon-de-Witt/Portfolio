@@ -169,6 +169,11 @@ h1 {
     opacity: 0;
 }
 
+.modal.is-open {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 .modal.is-opening {
     animation: modalIn 0.25s ease forwards;
 }

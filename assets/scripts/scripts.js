@@ -162,6 +162,13 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.add('is-opening');
             document.body.style.overflow = 'hidden';
 
+            modal.addEventListener('animationend', () => {
+                modal.classList.remove('is-opening');
+                modal.classList.add('is-open');
+            }, {
+                once: true
+            });
+
             const focusableElements = modal.querySelectorAll('button, a[href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
 
             if (focusableElements.length) {
@@ -175,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('is-closing');
 
         modal.addEventListener('animationend', () => {
+            modal.classList.remove('is-closing', 'is-open');
             modalBackdrop.hidden = true;
             document.body.style.overflow = '';
             lastFocusedElement?.focus();
