@@ -1,4 +1,4 @@
-import {initTheme} from './theme.js';
+import {initThemeToggle} from './theme.js';
 import {initEntryAnimations} from './animations.js';
 let lastFocusedElement = null;
 document.addEventListener('DOMContentLoaded', () => {
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Theme Toggle Logic
     const themeToggle = document.getElementById('themeToggle');
-    initTheme(themeToggle);
+    initThemeToggle(themeToggle);
     
     // Entry Animation Logic
     initEntryAnimations();
