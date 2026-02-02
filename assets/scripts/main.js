@@ -12,10 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImage = document.getElementById('modalImage');
     const modalGrade= document.getElementById('modalGrade');
     const closeBtn = document.querySelector('.modal-close');
-
-    // Theme Variables
-
-
     // Modal Focus Trap
     document.addEventListener('keydown', e => {
         if (modalBackdrop.hidden) return;
@@ -37,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Modal Data and Logic
     let modalData = {};
-    fetch('assets/data/modalData.json').then(response => response.json()).then(data => modalData = data).catch(err => console.error('Error loading modal data:', err));
+    fetch('assets/data/content.json').then(response => response.json()).then(data => modalData = data).catch(err => console.error('Error loading modal data:', err));
 
     document.querySelectorAll('.item').forEach(item => {
         item.addEventListener('click', () => {
