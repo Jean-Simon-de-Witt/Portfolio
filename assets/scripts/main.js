@@ -2,6 +2,7 @@ import {initThemeToggle} from './theme.js';
 import {initEntryAnimations} from './animations.js';
 let lastFocusedElement = null;
 document.addEventListener('DOMContentLoaded', () => {
+
     // Modal Variables
     const modalBackdrop = document.getElementById('modalBackdrop');
     const modal = modalBackdrop.querySelector('.modal');
@@ -10,14 +11,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDate = document.getElementById('modalDate');
     const modalLink = document.getElementById('modalLink');
     const modalImage = document.getElementById('modalImage');
-    const modalGrade= document.getElementById('modalGrade');
+    const modalGrade = document.getElementById('modalGrade');
+    const modalTechStack = document.getElementById('modalTechStack');
     const closeBtn = document.querySelector('.modal-close');
+
+        // Focus Trap Helper Function
+    function getFocusableElements(container) {
+        return Array.from(container.querySelectorAll('button, a[href], input, textarea, select, [tabindex]:not([tabindex="-1"])')).filter(el => !el.hidden && !el.disabled);
+    }
+
     // Modal Focus Trap
     document.addEventListener('keydown', e => {
         if (modalBackdrop.hidden) return;
         if (e.key !== 'Tab') return;
 
-        const focusableElements = modal.querySelectorAll('button, a[href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+        const focusableElements = getFocusableElements(modal);
+
+        if (focusableElements.length === 0) {
+            return;
+        }
+        if (focusableElements.length === 1) {
+            e.preventDefault();
+            focusableElements[0]?.focus();
+            return;
+        }
         const firstElement = focusableElements[0];
         const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -52,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalImage.hidden = false;
 
                 modalLink.href = data.link;
+                modalLink.textContent = 'View Certificate';
                 modalLink.hidden = false;
             }
             else {
@@ -62,9 +80,34 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.type === 'education') {
                 modalGrade.textContent = data.grade;
                 modalGrade.hidden = false;
+
+                if (data.link) {
+                    modalLink.href = data.link;
+                    modalLink.textContent = 'View Transcript';
+                    modalLink.hidden = false;
+                }
             }
             else {
                 modalGrade.hidden = true;
+            }
+
+            if (data.type === 'project') {
+                modalLink.href = data.link;
+                modalLink.textContent = 'View Project';
+                modalLink.hidden = false;
+                modalTechStack.innerHTML = '';
+
+                if (Array.isArray(data.techStack)) {
+                    data.techStack.forEach(tech => {
+                        const li = document.createElement('li');
+                        li.textContent = tech;
+                        modalTechStack.appendChild(li);
+                    });
+                    modalTechStack.hidden = false;
+                }
+                else {
+                    modalTechStack.hidden = true;
+                }
             }
 
             modalBackdrop.hidden = false;
@@ -79,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 once: true
             });
 
-            const focusableElements = modal.querySelectorAll('button, a[href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+            const focusableElements = getFocusableElements(modal);
 
             if (focusableElements.length) {
                 focusableElements[0].focus();
@@ -119,6 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
         modalImage.hidden = true;
         modalLink.hidden = true;
         modalGrade.hidden = true;
+        modalTechStack.hidden = true;
+        modalTechStack.innerHTML = '';
     }
 
     // Theme Toggle Logic

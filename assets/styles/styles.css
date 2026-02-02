@@ -7,6 +7,10 @@
     --subtext-color: #6b7280;
     --accent-color: teal;
     --backdrop-color: rgba(0, 0, 0, 0.5);
+    --techstack-background: color-mix(in srgb, teal 12%, transparent);
+    --techstack-background-hover: color-mix(in srgb, teal 25%, transparent);
+    --techstack-text: teal;
+    --techstack-border: color-mix(in srgb, teal 35%, transparent);
 
     --main-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -25,6 +29,10 @@
     --text-color: #e5e7eb;
     --accent-color: #38bdf8;
     --backdrop-color: rgba(0, 0, 0, 0.7);
+    --techstack-background: color-mix(in srgb, #38bdf8 18%, transparent);
+    --techstack-background-hover: color-mix(in srgb, #38bdf8 25%, transparent);
+    --techstack-text: #38bdf8;
+    --techstack-border: color-mix(in srgb, #38bdf8 45%, transparent);
 }
 
 body {
@@ -212,6 +220,34 @@ h1 {
     width: 100%;
     border-radius: var(--small-radius);
     margin-bottom: 1rem;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tech-stack[hidden] {
+    display: none;
+}
+
+.tech-stack li {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 999px;
+    background-color: var(--techstack-background);
+    color: var(--techstack-text);
+    border: 1px solid var(--techstack-border);
+    white-space: nowrap;
+}
+
+.tech-stack li:hover {
+    background-color: var(--techstack-background-hover);
 }
 
 .modal-link {

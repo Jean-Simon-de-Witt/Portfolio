@@ -41,7 +41,7 @@
         "title": "Stellenberg High School Web Development",
         "date": "August 2022",
         "content": "This course was presented at my high school as a form of extra enrichment. I learned the basics of web development including HTML, CSS, and JavaScript. The course covered fundamental concepts such as structuring web pages, styling with CSS, and adding interactivity using JavaScript. With our final project being a simple portfolio website, I gained hands-on experience in building simple web applications and websites.",
-        "link": "assets/certificates/Certificate for Stellenberg HIgh School Web Development Course.pdf",
+        "link": "assets/documents/certificates/Certificate for Stellenberg HIgh School Web Development Course.pdf",
         "image": "assets/images/Certificate for Stellenberg HIgh School Web Development Course.jpg"
     },
     "course-4": {
@@ -65,7 +65,7 @@
         "title": "Stellenberg High School Java Coding",
         "date": "December 2022",
         "content": "This course was presented at my high school as a form of extra enrichment. I learned the basics of Java programming such as data types, variables, Java Classes, functions, and control flow. Through practical exercises and projects, I gained hands-on experience in writing Java code and developing simple applications.",
-        "link": "assets/certificates/Certificate for Stellenberg High School Java Coding Course.pdf",
+        "link": "assets/documents/certificates/Certificate for Stellenberg High School Java Coding Course.pdf",
         "image": "assets/images/Certificate for Stellenberg High School Java Coding Course.jpg"
     },
     "course-7": {
@@ -83,5 +83,22 @@
         "content": "This course, presented by Piotr Jura on Udemy, focuses on mastering Laravel and PHP by building five real-world projects. Throughout the course, I learned advanced PHP programming concepts and Laravel framework features, including routing, middleware, Eloquent ORM, authentication, and RESTful API development. The course provided hands-on experience in building practical applications such as a task manager, blog platform, e-commerce site, social media app, and a project management tool, equipping me with the skills to develop robust web applications using Laravel and PHP.",
         "link": "https://www.udemy.com/certificate/UC-aace3a96-c0f9-4309-9030-11b44d4c5351/",
         "image": "assets/images/Certificate for Laravel & PHP Mastery Build 5 Real-World Projects.jpg"
+    },
+    "project-1": {
+        "type": "project",
+        "title": "Van Zyl Wedding Website",
+        "date": "April 2024 - August 2024",
+        "content": "I developed a simple wedding website for a family member's wedding using HTML, CSS, and JavaScript. The site is intended to display information about the event, display its location with an interactive map, and served as a way of sending in an RSVP for the wedding via an embedded form. This has been disabled now that the wedding has passed.",
+        "link": "https://github.com/Jean-Simon-de-Witt/Wedding-Website",
+        "techStack": ["HTML", "CSS", "JavaScript"]
+
+    },
+    "project-2": {
+        "type": "project",
+        "title": "Portfolio Website",
+        "date": "January 2026 - Present",
+        "content": "This is my personal portfolio website intended to display my education, certificates, experience, and projects. I challenged myself to make this website look as modern and professional as possible without using any frameworks or libraries. The website is built using vanilla HTML, CSS, and JavaScript.",
+        "link": "https://github.com/Jean-Simon-de-Witt/Portfolio",
+        "techStack": ["HTML", "CSS", "JavaScript", "JSON"]
     }
 }

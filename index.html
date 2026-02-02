@@ -83,7 +83,14 @@
 
             <section class="section reveal" id="projects">
                 <h2 class="section-header">Projects</h2>
-                <p class="body-text">Project details coming soon...</p>
+                <div class="items-grid reveal">
+                    <button class="item" data-type="project" data-key="project-1">
+                        <span class="item-text">Van Zyl Wedding Website</span>
+                    </button>
+                    <button class="item" data-type="project" data-key="project-2">
+                        <span class="item-text">Portfolio Website</span>
+                    </button>
+                </div>
             </section>
 
             <section class="section reveal" id="contact">
@@ -101,9 +108,10 @@
                 <img class="modal-image" id="modalImage" hidden>
                 <h3 id="modalTitle"></h3>
                 <p id="modalGrade" hidden></p>
+                <ul id="modalTechStack" class="tech-stack" hidden></ul>
                 <p id="modalDate"></p>
                 <p id="modalContent"></p>
-                <a class="modal-link" id="modalLink" target="_blank" rel="noopener" hidden>View Certificate</a>
+                <a class="modal-link" id="modalLink" target="_blank" rel="noopener" hidden></a>
             </div>
         </div>
     </body>
