@@ -160,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetModal() {
         modalImage.hidden = true;
+        modalImage.src = '';
         modalLink.hidden = true;
         modalGrade.hidden = true;
         modalTechStack.hidden = true;
