@@ -11,6 +11,7 @@
     --techstack-background-hover: color-mix(in srgb, teal 25%, transparent);
     --techstack-text: teal;
     --techstack-border: color-mix(in srgb, teal 35%, transparent);
+    --timeline-color: color-mix(in srgb, teal 30%, transparent);
 
     --main-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -27,12 +28,14 @@
     --surface-color-muted: #1f2937;
     --border-color: #374151;
     --text-color: #e5e7eb;
+    --subtext-color: #9ca3af;
     --accent-color: #38bdf8;
     --backdrop-color: rgba(0, 0, 0, 0.7);
     --techstack-background: color-mix(in srgb, #38bdf8 18%, transparent);
     --techstack-background-hover: color-mix(in srgb, #38bdf8 25%, transparent);
     --techstack-text: #38bdf8;
     --techstack-border: color-mix(in srgb, #38bdf8 45%, transparent);
+    --timeline-color: color-mix(in srgb, #38bdf8 30%, transparent);
 }
 
 body {
@@ -143,6 +146,68 @@ h1 {
     font-size: 0.85rem;
     color: var(--subtext-color);
     margin-top: 0.25rem;
+}
+
+/* EXPERIENCE TIMELINE */
+.timeline {
+    position:relative;
+    padding-left: 3.5rem;
+}
+
+.timeline::before {
+    content: "";
+    position:absolute;
+    top:0;
+    left:1.5rem;
+    width:2px;
+    height: 100%;
+    background-color: var(--timeline-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: calc(-2rem - 4px);
+    top: 0.4rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+}
+
+.timeline-content {
+    background: transparent;
+}
+
+.role {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.15rem;
+}
+
+.company {
+    font-size: 0.95rem;
+    color: var(--subtext-color);
+    margin-bottom: 0.15rem;
+}
+
+.date {
+    font-size: 0.85rem;
+    color: var(--subtext-color);
+    margin-bottom: 0.75rem;
+}
+
+.summary {
+    line-height: 1.6;
+    max-width: 60ch;
 }
 
 /* FOOTER */
