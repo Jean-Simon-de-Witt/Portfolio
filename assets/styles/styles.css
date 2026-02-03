@@ -20,6 +20,11 @@
 
     --small-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     --medium-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    --timeline-width: 2px;
+    --timeline-dot-size: 10px;
+    --timeline-offset: 3.5rem;
+    --timeline-line-offset: 1.5rem;
 }
 
 :root[data-theme="dark"] {
@@ -151,15 +156,15 @@ h1 {
 /* EXPERIENCE TIMELINE */
 .timeline {
     position:relative;
-    padding-left: 3.5rem;
+    padding-left: var(--timeline-offset);
 }
 
 .timeline::before {
     content: "";
     position:absolute;
     top:0;
-    left:1.5rem;
-    width:2px;
+    left: var(--timeline-line-offset);
+    width:var(--timeline-width);
     height: 100%;
     background-color: var(--timeline-color);
 }
@@ -175,10 +180,10 @@ h1 {
 
 .timeline-dot {
     position: absolute;
-    left: calc(-2rem - 4px);
+    left: calc((var(--timeline-line-offset) - var(--timeline-offset)) - (var(--timeline-dot-size) / 2 - var(--timeline-width) / 2));
     top: 0.4rem;
-    width: 10px;
-    height: 10px;
+    width: var(--timeline-dot-size);
+    height: var(--timeline-dot-size);
     border-radius: 50%;
     background-color: var(--accent-color);
 }

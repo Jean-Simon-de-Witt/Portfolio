@@ -8,6 +8,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/styles/styles.css">
         <script type="module" src="assets/scripts/main.js" defer></script>
+
+        <meta property="og:title" content="Jean-Simon de Witt - Software Developer">
+        <meta property="og:description" content="Portfolio showcasing projects, education, experience, and certifications">
+        <meta property="og:type" content="website">
     </head>
     <body>
         <header id="header">
@@ -112,10 +116,10 @@
         <footer id="footer"></footer>
 
         <div class="modal-backdrop" id="modalBackdrop" hidden>
-            <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
                 <button class="modal-close" aria-label="Close modal">&times;</button>
 
-                <img class="modal-image" id="modalImage" hidden>
+                <img class="modal-image" id="modalImage" loading="lazy" hidden>
                 <h3 id="modalTitle"></h3>
                 <p id="modalGrade" hidden></p>
                 <ul id="modalTechStack" class="tech-stack" hidden></ul>

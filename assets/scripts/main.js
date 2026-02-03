@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalGrade = document.getElementById('modalGrade');
     const modalTechStack = document.getElementById('modalTechStack');
     const closeBtn = document.querySelector('.modal-close');
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
         // Focus Trap Helper Function
     function getFocusableElements(container) {
@@ -86,6 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     modalLink.textContent = 'View Transcript';
                     modalLink.hidden = false;
                 }
+                else {
+                    modalLink.hidden = true;
+                }
             }
             else {
                 modalGrade.hidden = true;
@@ -114,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('is-closing');
             modal.classList.add('is-opening');
             document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = '${scrollbarWidth}px';
 
             modal.addEventListener('animationend', () => {
                 modal.classList.remove('is-opening');
@@ -138,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('is-closing', 'is-open');
             modalBackdrop.hidden = true;
             document.body.style.overflow = '';
+            document.body.style.paddingRight = '0';
             lastFocusedElement?.focus();
         }, {
             once: true

@@ -4,7 +4,7 @@ export function initThemeToggle(toggleBtn) {
 
     if (savedTheme) {
         root.dataset.theme = savedTheme;
-        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     }
 
     toggleBtn.addEventListener('click', () => {
