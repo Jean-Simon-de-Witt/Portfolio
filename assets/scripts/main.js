@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('is-closing');
             modal.classList.add('is-opening');
             document.body.style.overflow = 'hidden';
-            document.body.style.paddingRight = '${scrollbarWidth}px';
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
 
             modal.addEventListener('animationend', () => {
                 modal.classList.remove('is-opening');
@@ -175,7 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Theme Toggle Logic
     const themeToggle = document.getElementById('themeToggle');
-    initThemeToggle(themeToggle);
+    const icons = document.querySelectorAll(".icon");
+    initThemeToggle(themeToggle, icons);
     
     // Entry Animation Logic
     initEntryAnimations();

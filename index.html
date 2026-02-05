@@ -19,7 +19,7 @@
             <h1>Jean-Simon de Witt</h1>
             <p class="tagline">Software Developer</p>
         </header>
-        <button id="themeToggle" aria-label="Toggle-theme">🌙</button>
+        <button id="themeToggle" aria-label="Toggle-theme"><img src="assets/icons/light-mode-theme-icon.svg" id="themeIcon" class="icon" data-key="icon-1"></button>
         <main id="content">
             <section class="section reveal" id="about-me">
                 <h2 class="section-header">About Me</h2>
@@ -110,11 +110,33 @@
 
             <section class="section reveal" id="contact">
                 <h2 class="section-header">Contact</h2>
-                <p class="body-text">You can reach me at</p>
+                <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    <P hidden><label>Don't fill this in: </label><input name="bot-field"></P>
+
+                    <div class="form-field">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="message">Message</label>
+                        <textarea name="message" rows="5" id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
             </section>
         </main>
 
-        <footer id="footer"></footer>
+        <footer id="footer">
+            <div id="socialLinks">
+                <a class="social-link" href="https://www.linkedin.com/in/jean-simon-de-witt-891b1b1a2/"><img class="icon" src="assets/icons/light-mode-linkedin-icon.svg" data-key="icon-2"></a>
+                <a class="social-link" href="https://github.com/Jean-Simon-de-Witt"><img class="icon" src="assets/icons/light-mode-github-icon.svg" data-key="icon-3"></a>
+            </div>
+        </footer>
 
         <div class="modal-backdrop" id="modalBackdrop" hidden>
             <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
